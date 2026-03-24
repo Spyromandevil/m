@@ -1,4 +1,11 @@
-<!DOCTYPE html>
+
+.footer a {
+    color: #00ff
+
+<form action="https://formsubmit.co/tvuj@email.cz" method="POST" onsubmit="prepare()">
+
+<input type="hidden" name="_captcha" value="false">
+<input type<!DOCTYPE html>
 <html lang="cs">
 <head>
 <meta charset="UTF-8">
@@ -44,14 +51,13 @@ h1 {
     opacity: 0.8;
 }
 
-/* BUTTON SELECT */
-.select-buttons {
+.select-buttons, .contact-buttons {
     display: flex;
     gap: 8px;
     margin-top: 10px;
 }
 
-.select-buttons button {
+.select-buttons button, .contact-buttons button {
     flex: 1;
     padding: 12px;
     border-radius: 10px;
@@ -62,13 +68,12 @@ h1 {
     transition: 0.2s;
 }
 
-.select-buttons button.active {
+.select-buttons button.active, .contact-buttons button.active {
     background: #00ff88;
     color: black;
     box-shadow: 0 0 15px #00ff88;
 }
 
-/* STAR RATING */
 .stars {
     display: flex;
     justify-content: space-between;
@@ -88,28 +93,6 @@ h1 {
     text-shadow: 0 0 10px #00ff88;
 }
 
-/* CONTACT BUTTONS */
-.contact-buttons {
-    display: flex;
-    gap: 8px;
-    margin-top: 10px;
-}
-
-.contact-buttons button {
-    flex: 1;
-    padding: 10px;
-    border-radius: 10px;
-    border: none;
-    background: #1a1a1a;
-    color: white;
-}
-
-.contact-buttons button.active {
-    background: #00ff88;
-    color: black;
-}
-
-/* SUBMIT */
 .submit {
     width: 100%;
     padding: 15px;
@@ -146,8 +129,7 @@ h1 {
 <div class="container">
 <h1>Jak jsi byl spokojen?</h1>
 
-<form action="https://formsubmit.co/tvuj@email.cz" method="POST" onsubmit="prepare()">
-
+<form action="https://formsubmit.co/infohofsys@gmail.com" method="POST" onsubmit="return prepare()">
 <input type="hidden" name="_captcha" value="false">
 <input type="hidden" name="_subject" value="CIAS – Nové hodnocení">
 
@@ -188,7 +170,6 @@ h1 {
 <input type="text" name="Kontakt" placeholder="Zadej kontakt" required>
 
 <button class="submit" type="submit">Odeslat hodnocení</button>
-
 </form>
 
 <div class="footer">
@@ -196,7 +177,6 @@ CIAS Detailing<br>
 Kontakt: 777 123 456<br>
 Web: <a href="#">www.ciasdetailing.cz</a>
 </div>
-
 </div>
 
 <script>
@@ -233,6 +213,19 @@ function prepare() {
         alert("Klikni na hodnocení ⭐");
         return false;
     }
+    if (!document.getElementById("serviceValue").value) {
+        alert("Vyber službu");
+        return false;
+    }
+    if (!document.getElementById("recommendValue").value) {
+        alert("Vyber doporučení");
+        return false;
+    }
+    if (!document.getElementById("contactType").value || !document.querySelector('input[name="Kontakt"]').value) {
+        alert("Zadej kontakt");
+        return false;
+    }
+    return true;
 }
 </script>
 
